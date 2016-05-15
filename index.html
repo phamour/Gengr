@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Gengr - generate graph from data</title>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+	<style type="text/css">
+		#graph {
+			height: 560px;
+            border: 1px dashed #ddd;
+            border-radius: 4px;
+		}
+        #arcs {
+            height: 18em;
+        }
+        #blockages {
+            height: 8em;
+        }
+	</style>
+</head>
+<body>
+	<div class="container">
+		<nav class="navbar navbar-default">
+			<div class="container">
+				<div class="navbar-header">
+					<a class="navbar-brand" href="#">Gengr</a>
+				</div>
+			</div>
+		</nav>
+
+		<div class="row">
+			<div class="col-md-3">
+				<form>
+					<div class="form-group">
+						<label for="nbv">Nb. vertices (|V|):</label>
+						<input type="number" class="form-control" id="nbv" required>
+					</div>
+					<div class="form-group">
+						<label for="arcs">Arc list:</label>
+						<textarea class="form-control" id="arcs"></textarea>
+					</div>
+                    <div class="form-group">
+                        <label for="blockages">Blockage list:</label>
+                        <textarea class="form-control" id="blockages"></textarea>
+                    </div>
+                    <button type="button" class="btn btn-success" id="btndraw">Generate graph</button>
+				</form>
+			</div>
+			<div class="col-md-9">
+				<div id="graph"></div>
+			</div>
+		</div>
+	</div>
+
+	<script src="https://code.jquery.com/jquery-1.12.3.min.js" integrity="sha256-aaODHAgvwQW1bFOGXMeX+pC4PZIPsvn2h1sArYOhgXQ=" crossorigin="anonymous"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/cytoscape/2.6.12/cytoscape.min.js"></script>
+	<script src="script.js"></script>
+</body>
+</html>
