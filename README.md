@@ -7,7 +7,7 @@ Arcs are seperated into lines and each contains 2 fields delimited by whitespace
 
 **Note that** the vertex id is formated in human-readable version, which means it should vary from 1 to N.
 
-- Example of a K3 graph (complet graph with 3 vertices):
+- Example of a K3 graph (complete graph with 3 vertices):
   
   ```
   1 2
