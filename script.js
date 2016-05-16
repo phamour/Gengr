@@ -24,12 +24,13 @@
         }
     ];
 
-    var graph = {
-        nodes: [],
-        edges: []
-    };
-
     $('#btndraw').on('click', function() {
+        // Init graph
+        var graph = {
+            nodes: [],
+            edges: []
+        };
+
         // Auto generate vertices by number
         var nbv = $('#nbv').val() || 9;
         for (var i = 0; i < nbv; i++) {
