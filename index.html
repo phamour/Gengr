@@ -30,8 +30,20 @@
 				</div>
                 <div class="collapse navbar-collapse">
                     <ul class="nav navbar-nav">
-                        <li><a id="load1" href="#">Load 4x4 b3</a></li>
-                        <li><a id="load2" href="#">Load 5x5 b1</a></li>
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">4x4 b3<span class="caret"></span></a>
+                            <ul class="dropdown-menu">
+                                <li><a id="load4x4" href="#">Load original graph</a></li>
+                                <li><a id="load4x4opt" href="#">Load optimal graph</a></li>
+                            </ul>
+                        </li>
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">5x5 b1<span class="caret"></span></a>
+                            <ul class="dropdown-menu">
+                                <li><a id="load5x5" href="#">Load original graph</a></li>
+                                <li><a id="load5x5opt" href="#">Load optimal graph</a></li>
+                            </ul>
+                        </li>
                     </ul>
                 </div>
 		</nav>
@@ -62,6 +74,7 @@
 	</div>
 
 	<script src="https://code.jquery.com/jquery-1.12.3.min.js" integrity="sha256-aaODHAgvwQW1bFOGXMeX+pC4PZIPsvn2h1sArYOhgXQ=" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/cytoscape/2.6.12/cytoscape.min.js"></script>
     <script src="script.js"></script>
 	<script src="exload.js"></script>
