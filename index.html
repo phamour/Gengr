@@ -9,7 +9,7 @@
             border: 1px dashed #ddd;
             border-radius: 4px;
 		}
-        #arcs {
+        textarea.arcs {
             height: 18em;
         }
         #blockages {
@@ -49,16 +49,24 @@
 		</nav>
 
 		<div class="row">
-			<div class="col-md-3">
+			<div class="col-md-4">
 				<form>
 					<div class="form-group">
 						<label for="nbv">Nb. vertices (|V|):</label>
 						<input type="number" class="form-control" id="nbv" required>
 					</div>
-					<div class="form-group">
-						<label for="arcs">Arc list:</label>
-						<textarea class="form-control" id="arcs"></textarea>
-					</div>
+
+                    <div class="row">
+                        <div class="form-group col-md-6">
+                            <label for="arcs">Solution arc list:</label>
+                            <textarea class="form-control arcs" id="arcs"></textarea>
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label for="oarcs">Original arc list:</label>
+                            <textarea class="form-control arcs" id="oarcs"></textarea>
+                        </div>
+                    </div>
+					
                     <div class="form-group">
                         <label for="blockages">Blockage list:</label>
                         <textarea class="form-control" id="blockages"></textarea>
@@ -67,7 +75,7 @@
                     <a id="clear" href="#">Clear</a>
 				</form>
 			</div>
-			<div class="col-md-9">
+			<div class="col-md-8">
 				<div id="graph"></div>
 			</div>
 		</div>

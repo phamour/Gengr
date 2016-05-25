@@ -21,6 +21,16 @@
                 'line-color': '#000',
                 'target-arrow-color': '#000'
             }
+        },
+        {
+            selector: '.reversed',
+            style: {
+                'content': '',
+                'target-arrow-shape': 'triangle',
+                'width': 3,
+                'line-color': '#f1c40f',
+                'target-arrow-color': '#f1c40f'
+            }
         }
     ];
 
@@ -44,6 +54,11 @@
 
         // Parse arc list to fetch arcs
         var arcs = str2arcs($('#arcs').val());
+        // Parse original arc list
+        var oarcs = str2arcs($('#oarcs').val());
+
+        // Handle reversals
+        arcs = handleReversals(arcs, oarcs);
 
         // Parse blockage list
         var blockages = str2arcs($('#blockages').val());
@@ -90,5 +105,19 @@
         }
 
         return arcs;
+    }
+
+    function handleReversals(solutionArcs, originalArcs) {
+        if (originalArcs && originalArcs.length > 0) {
+            for (var i in solutionArcs) {
+                var solutionA = solutionArcs[i].data;
+                var originalA = originalArcs[i].data;
+                if (solutionA.source === originalA.target && 
+                    solutionA.target === originalA.source) {
+                    solutionArcs[i]['classes'] = 'reversed';
+                }
+            }
+        }
+        return solutionArcs;
     }
 })();
