@@ -23,7 +23,27 @@
             }
         },
         {
-            selector: '.reversed',
+            selector: '.reversed_ok',
+            style: {
+                'content': '',
+                'target-arrow-shape': 'triangle',
+                'width': 1,
+                'line-color': '#2ecc71',
+                'target-arrow-color': '#2ecc71'
+            }
+        },
+        {
+            selector: '.reversed_more',
+            style: {
+                'content': '',
+                'target-arrow-shape': 'triangle',
+                'width': 3,
+                'line-color': '#e74c3c',
+                'target-arrow-color': '#e74c3c'
+            }
+        },
+        {
+            selector: '.reversed_less',
             style: {
                 'content': '',
                 'target-arrow-shape': 'triangle',
@@ -54,11 +74,15 @@
 
         // Parse arc list to fetch arcs
         var arcs = str2arcs($('#arcs').val());
+        // Parse optimum solution arc list
+        var optarcs = str2arcs($('#optarcs').val());
         // Parse original arc list
         var oarcs = str2arcs($('#oarcs').val());
 
         // Handle reversals
-        arcs = handleReversals(arcs, oarcs);
+        if (optarcs.length > 0 && oarcs.length > 0) {
+            arcs = handleReversals(arcs, optarcs, oarcs);
+        }
 
         // Parse blockage list
         var blockages = str2arcs($('#blockages').val());
@@ -107,17 +131,34 @@
         return arcs;
     }
 
-    function handleReversals(solutionArcs, originalArcs) {
-        if (originalArcs && originalArcs.length > 0) {
+    function handleReversals(solutionArcs, optimumArcs, originalArcs) {
+        var isValid = optimumArcs && optimumArcs.length > 0 && 
+            originalArcs && originalArcs.length > 0;
+
+        if (isValid) {
             for (var i in solutionArcs) {
                 var solutionA = solutionArcs[i].data;
+                var optimumA = optimumArcs[i].data;
                 var originalA = originalArcs[i].data;
-                if (solutionA.source === originalA.target && 
-                    solutionA.target === originalA.source) {
-                    solutionArcs[i]['classes'] = 'reversed';
+
+                // Determine if arcs are reversed in solution and in optimal solution
+                var isSolReversed = solutionA.source === originalA.target && 
+                    solutionA.target === originalA.source;
+                var isOptReversed = optimumA.source === originalA.target && 
+                    optimumA.target === originalA.source;
+
+                var classes = '';
+                if (isSolReversed && isOptReversed) {
+                    classes = 'reversed_ok';
+                } else if (isSolReversed && !isOptReversed) {
+                    classes = 'reversed_more';
+                } else if (!isSolReversed && isOptReversed) {
+                    classes = 'reversed_less';
                 }
+                solutionArcs[i]['classes'] = classes;
             }
         }
+
         return solutionArcs;
     }
 })();

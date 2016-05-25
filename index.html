@@ -52,23 +52,27 @@
 			<div class="col-md-4">
 				<form>
 					<div class="form-group">
-						<label for="nbv">Nb. vertices (|V|):</label>
+						<label for="nbv">Nb. vertices (|V|)</label>
 						<input type="number" class="form-control" id="nbv" required>
 					</div>
 
                     <div class="row">
-                        <div class="form-group col-md-6">
-                            <label for="arcs">Solution arc list:</label>
+                        <div class="form-group col-md-4">
+                            <label for="arcs">Solution arcs</label>
                             <textarea class="form-control arcs" id="arcs"></textarea>
                         </div>
-                        <div class="form-group col-md-6">
-                            <label for="oarcs">Original arc list:</label>
+                        <div class="form-group col-md-4">
+                            <label for="optarcs">Optimum arcs</label>
+                            <textarea class="form-control arcs" id="optarcs"></textarea>
+                        </div>
+                        <div class="form-group col-md-4">
+                            <label for="oarcs">Original arcs</label>
                             <textarea class="form-control arcs" id="oarcs"></textarea>
                         </div>
                     </div>
 					
                     <div class="form-group">
-                        <label for="blockages">Blockage list:</label>
+                        <label for="blockages">Blockages</label>
                         <textarea class="form-control" id="blockages"></textarea>
                     </div>
                     <button type="button" class="btn btn-success" id="btndraw">Generate graph</button>
