@@ -41,13 +41,24 @@
     <div id="graph"></div>
 
     <script src="sigma.min.js"></script>
+    <script src="customArrow.js"></script>
     <script>
     function render() {
-        var sig = new sigma('graph');
+        var sig = new sigma({
+            renderers: [
+                {
+                    container: document.getElementById('graph'),
+                    type: 'canvas'
+                }
+            ]
+        });
         var datajson = JSON.parse(document.getElementById('datajson').value);
         
         sig.settings({
-            defaultNodeColor: '#ec5148'
+            defaultNodeColor: '#ec5148',
+            minEdgeSize: 3,
+            maxEdgeSize: 3,
+            defaultArrowSizeMultiplier: 10
         });
         sig.graph.clear();
         sig.graph.read(datajson);
